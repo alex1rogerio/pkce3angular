@@ -20,7 +20,6 @@ export class AppComponent implements OnDestroy {
   helloSubscription: Subscription = new Subscription;
 
   constructor(private oauthService: OAuthService, private appService: AppService) {
-
     this.configure();
   }
   ngOnDestroy(): void {
@@ -29,6 +28,7 @@ export class AppComponent implements OnDestroy {
 
   login() {
     this.oauthService.initCodeFlow();
+    this.tokenString = this.oauthService.authorizationHeader();
   }
 
   private configure() {
